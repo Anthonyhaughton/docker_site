@@ -1,0 +1,10 @@
+---
+
+- name:
+  hosts: servers
+  become: true
+  tasks:
+    - name: Update repos
+      yum:
+        name: "*"
+        state: latest
