@@ -5,3 +5,8 @@
     state: started
     ports:
       - "{{ container_port_mapping }}"
+    restart_policy: always
+
+  # June 8th 2024: Currently troubleshooting why the container won't persist after it's run.
+  # For some reason it keeps failing out and exciting. But I can start and run it manually
+  # with no issues.. Will pick back up on it later.

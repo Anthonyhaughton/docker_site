@@ -1,0 +1,7 @@
+- name: Copy Dockerfile to EC2 instance
+  copy:
+    src: "{{ dockerfile_src_path }}"
+    dest: "{{ dockerfile_dest_path }}"
+    owner: "{{ owner }}"
+    group: "{{ owner }}"
+    mode: 0644

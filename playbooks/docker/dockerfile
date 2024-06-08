@@ -1,0 +1,33 @@
+FROM ubuntu:20.04
+
+# Install necessary packages. awscli keeps asking for region and I can't figure out how to automate it..
+RUN apt-get update && \
+    apt-get install -y nginx && \
+    apt-get clean
+
+# Install awscli manually
+RUN apt update && \
+    apt install -y curl unzip
+
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install
+
+# Set non-interactive installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Set default AWS region
+ENV AWS_DEFAULT_REGION=us-east-1
+
+# Set environment variables for AWS credentials
+ENV AWS_ACCESS_KEY_ID=''
+ENV AWS_SECRET_ACCESS_KEY=''
+
+# Copy files from S3 bucket
+RUN aws s3 cp s3://anthonyhaughton.com/ /var/www/html/ --recursive
+
+# Expose port 80
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
