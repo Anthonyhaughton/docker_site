@@ -1,3 +1,5 @@
+---
+
 - name: Create Docker Image and Deploy
   hosts: docker
   become: true
@@ -25,4 +27,4 @@
     - role: run_docker_container
       tags:
         - run_docker_container
-      # Rin the container
+      # Run the container
