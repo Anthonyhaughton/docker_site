@@ -59,7 +59,7 @@ This project sets up a Docker container running an NGINX web server that serves 
 
 3. **Run the Playbook**:
 
-    Assuimg you have your hosts file set up along with you the account you will be running the plays with on the remote host:
+    Assuimg you have your hosts file set up along with the account you will be running the plays with on the remote host:
 
     ansible-playbook -i hosts -k -u ansible playbooks/deploy_website.yaml -vvv
 
