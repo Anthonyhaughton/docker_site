@@ -12,28 +12,28 @@ This project sets up a Docker container running an NGINX web server that serves 
 ## Project Structure
 
 ├── group_vars
-│   └── docker.yaml
+│ └── docker.yaml
 ├── hosts
 ├── playbooks
-│   ├── deploy_website.yaml
-│   ├── docker
-│   │   └── dockerfile
-│   └── roles
-│       ├── build_docker_image
-│       │   └── tasks
-│       │       └── main.yaml
-│       ├── copy_dockerfile
-│       │   └── tasks
-│       │       └── main.yaml
-│       ├── install_docker
-│       │   └── tasks
-│       │       └── main.yaml
-│       ├── run_docker_container
-│       │   └── tasks
-│       │       └── main.yaml
-│       └── update_repos
-│           └── tasks
-│               └── main.yaml
+│ ├── deploy_website.yaml
+│ ├── docker
+│ │ └── dockerfile
+│ └── roles
+│ ├── build_docker_image
+│ │ └── tasks
+│ │ └── main.yaml
+│ ├── copy_dockerfile
+│ │ └── tasks
+│ │ └── main.yaml
+│ ├── install_docker
+│ │ └── tasks
+│ │ └── main.yaml
+│ ├── run_docker_container
+│ │ └── tasks
+│ │ └── main.yaml
+│ └── update_repos
+│ └── tasks
+│ └── main.yaml
 └── readme.md
 
 ## Running the Project
