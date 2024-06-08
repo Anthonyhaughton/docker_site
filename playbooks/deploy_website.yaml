@@ -7,7 +7,7 @@
     - role: update_repos
       tags:
         - update_repos
-      # Update the repos on the host
+      # Update the packages on the host
       
     - role: install_docker
       tags:
