@@ -10,7 +10,7 @@ This project sets up a Docker container running an NGINX web server that serves 
 - Git
 
 ## Project Structure
-
+```
 ├── group_vars
 │ └── docker.yaml
 ├── hosts
@@ -35,6 +35,7 @@ This project sets up a Docker container running an NGINX web server that serves 
 │ └── tasks
 │ └── main.yaml
 └── readme.md
+```
 
 ## Running the Project
 
