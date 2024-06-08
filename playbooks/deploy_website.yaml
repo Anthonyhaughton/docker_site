@@ -1,0 +1,16 @@
+- name: Create Docker Image and Deploy
+  hosts: docker
+  become: true
+  roles:
+    - role: update_repos
+      tags:
+        - update_repos
+    - role: install_docker
+      tags:
+        - install_docker
+    - role: build_docker_image
+      tags:
+        - build_image
+    - role: run_docker_container
+      tags:
+        - run_container

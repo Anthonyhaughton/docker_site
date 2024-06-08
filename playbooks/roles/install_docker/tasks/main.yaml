@@ -1,0 +1,9 @@
+- name: Install Docker
+  yum:
+    name: "{{ package_name }}"
+    state: latest
+- name: Start and Enable service
+  service:
+    name: 'docker'
+    state: started
+    enabled: true

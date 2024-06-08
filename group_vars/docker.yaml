@@ -1,0 +1,4 @@
+docker_image_name: my-website
+dockerfile_path: ../docker/docker_file
+container_port_mapping: "80:80"
+package_name: docker

@@ -1,9 +1,0 @@
----
-
-- name: Docker Build
-  hosts: servers
-  become: true
-  roles:
-    - role: repos
-    - role: docker
- 

@@ -1,0 +1,7 @@
+- name: Run Docker container
+  docker_container:
+    name: my-website-container
+    image: "{{ docker_image_name }}"
+    state: started
+    ports:
+      - "{{ container_port_mapping }}"

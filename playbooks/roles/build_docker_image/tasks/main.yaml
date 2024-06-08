@@ -1,0 +1,5 @@
+- name: Build Docker image
+  docker_image:
+    name: "{{ docker_image_name }}"
+    path: "{{ dockerfile_path }}"
+    state: build

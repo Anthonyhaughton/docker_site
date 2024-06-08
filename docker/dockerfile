@@ -1,0 +1,19 @@
+FROM ubuntu:20.04
+
+# Install necessary packages
+RUN apt-get update && \
+    apt-get install -y awscli nginx && \
+    apt-get clean
+
+# Set environment variables for AWS credentials
+ENV AWS_ACCESS_KEY_ID=AKIAVFZJD5W53VKTKEDC
+ENV AWS_SECRET_ACCESS_KEY=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
+
+# Copy files from S3 bucket
+RUN aws s3 cp https://anthonyhaughton.com.s3.amazonaws.com/index.html /var/www/html/ --recursive
+
+# Expose port 80
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
