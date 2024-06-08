@@ -2,7 +2,7 @@
   yum:
     name: "{{ package_name }}"
     state: latest
-- name: Start and Enable service
+- name: Start and Enable Service
   service:
     name: 'docker'
     state: started

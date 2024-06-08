@@ -1,0 +1,8 @@
+- name: Run Docker Container
+  docker_container:
+    name: "{{ docker_container_name }}"
+    image: "{{ docker_image_name }}"
+    state: started
+    ports:
+      - "{{ container_port_mapping }}"
+    restart_policy: always

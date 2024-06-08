@@ -1,4 +1,4 @@
-- name: Update repos
+- name: Update Repos
   yum:
     name: "*"
     state: latest

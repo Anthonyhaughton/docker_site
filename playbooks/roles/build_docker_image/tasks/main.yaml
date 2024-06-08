@@ -1,7 +1,7 @@
 - name: Build Docker Image
   community.docker.docker_image:
     name: "{{ docker_image_name }}"
-    tag: 'latest'
+    tag: "{{ tag }}"
     source: 'build'
     build:
       path: "{{ dockerfile_build_path }}"
