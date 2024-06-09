@@ -64,4 +64,5 @@ This project sets up a Docker container running an NGINX web server that serves 
     ansible-playbook -i hosts -k -u ansible playbooks/deploy_website.yaml -vvv
 
 6. **Access the website**:
-    Open a web browser and navigate to `http://<your-ec2-instance-ip>`
+
+   Open a web browser and navigate to `http://<your-ec2-instance-ip>`
