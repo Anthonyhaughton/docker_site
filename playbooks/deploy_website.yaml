@@ -1,3 +1,5 @@
+---
+
 - name: Create Docker Image and Deploy
   hosts: docker
   become: true
@@ -6,7 +8,7 @@
     - role: update_repos
       tags:
         - update_repos
-      # Update the repos on the host
+      # Update the packages on the host
       
     - role: install_docker
       tags:
@@ -26,4 +28,4 @@
     - role: run_docker_container
       tags:
         - run_docker_container
-      # Rin the container
+      # Run the container
