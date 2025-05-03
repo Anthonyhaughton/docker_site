@@ -1,0 +1,27 @@
+---
+
+- name: Deploy AWS VM for Docker Site
+  hosts: docker
+  roles:
+
+    - name: Provison VM
+      role: deploy_vm
+
+- name: Wait for VM to Provison
+  hosts: dynamic_vm
+  tasks:
+  
+  - name: Wait for VM to Start
+    ansible.builtin.wait_for:
+      port: 22
+      delay: 10
+      timeout: 300
+      state: started
+
+- name: Create Docker Image and Deploy
+  hosts: dynamic_vm
+  become: true
+  roles:
+
+    - name: Deploy Docker Website
+      role: deploy_website

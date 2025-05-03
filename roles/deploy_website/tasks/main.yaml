@@ -1,0 +1,25 @@
+---
+
+- name: Update Repos
+  ansible.builtin.import_tasks: update_repos.yaml
+  tags:
+    - update_repos  
+    # Update the packages on the host
+      
+- name: Install Docker
+  ansible.builtin.import_tasks: install_docker.yaml
+  tags:
+    - install_docker 
+    # Install Docker and Start the Service
+
+- name: Create Docker Image
+  ansible.builtin.import_tasks: build_image.yaml
+  tags:
+    - build_image
+    # Build Docker Image
+
+- name: Run Container
+  ansible.builtin.import_tasks: run_container.yaml
+  tags:
+    - run_docker_container
+    # Run the container

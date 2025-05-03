@@ -1,9 +1,0 @@
-- name: Install Docker
-  ansible.builtin.dnf:
-    name: "{{ package_name }}"
-    state: latest
-- name: Start and Enable Service
-  ansible.builtin.service:
-    name: 'docker'
-    state: started
-    enabled: true

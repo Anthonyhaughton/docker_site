@@ -1,0 +1,20 @@
+---
+
+- name: Install Docker
+  ansible.builtin.dnf:
+    name: "{{ package_name }}"
+    state: latest
+
+- name: Start and Enable Service
+  ansible.builtin.service:
+    name: 'docker'
+    state: started
+    enabled: true
+
+- name: Copy Dockerfile to EC2 instance
+  ansible.builtin.copy:
+    src: "{{ dockerfile_src_path }}"
+    dest: "{{ dockerfile_dest_path }}"
+    owner: "{{ file_owner }}"
+    group: "{{ file_owner }}"
+    mode: "{{ file_mode }}"

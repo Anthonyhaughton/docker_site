@@ -1,0 +1,35 @@
+---
+
+- name: Create Docker SG for EC2
+  amazon.aws.ec2_group:
+    name: docker_sg
+    description: SSH and HTTP for Docker App
+    vpc_id: "{{ vpc_subnet_id }}"
+    region: "{{ region }}"
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+        rule_desc: SSH into VM
+
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+        rule_desc: HTTP access
+
+      - proto: tcp
+        from_port: 443
+        to_port: 443
+        cidr_ip: 0.0.0.0/0
+        rule_desc: HTTPS access
+
+    rules_egress:
+      - proto: -1
+        from_port: 0
+        to_port: 0
+        cidr_ip: 0.0.0.0/0
+        rule_desc: Allow all outbound traffic
+    
+    state: present

@@ -1,0 +1,7 @@
+---
+
+- name: Create SGs for SSH, HTTP, HTTPs access
+  ansible.builtin.import_tasks: create_sg.yaml
+
+- name: Deploy VM
+  ansible.builtin.import_tasks: deploy_vm.yaml
