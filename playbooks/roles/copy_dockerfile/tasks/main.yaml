@@ -1,5 +1,5 @@
 - name: Copy Dockerfile to EC2 instance
-  copy:
+  ansible.builtin.copy:
     src: "{{ dockerfile_src_path }}"
     dest: "{{ dockerfile_dest_path }}"
     owner: "{{ file_owner }}"

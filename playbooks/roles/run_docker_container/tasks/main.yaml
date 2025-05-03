@@ -1,5 +1,5 @@
 - name: Run Docker Container
-  docker_container:
+  community.docker.docker_container:
     name: "{{ docker_container_name }}"
     image: "{{ docker_image_name }}"
     state: started

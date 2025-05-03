@@ -1,9 +1,9 @@
 - name: Install Docker
-  yum:
+  ansible.builtin.dnf:
     name: "{{ package_name }}"
     state: latest
 - name: Start and Enable Service
-  service:
+  ansible.builtin.service:
     name: 'docker'
     state: started
     enabled: true
