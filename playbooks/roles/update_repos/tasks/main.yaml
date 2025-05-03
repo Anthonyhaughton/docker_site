@@ -1,4 +1,4 @@
 - name: Update Repos
-  yum:
+  ansible.builtin.dnf:
     name: "*"
     state: latest
