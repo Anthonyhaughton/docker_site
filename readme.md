@@ -4,37 +4,36 @@ This project sets up a Docker container running an NGINX web server that serves 
 
 ## Prerequisites
 
-- Docker
 - AWS account
 - AWS CLI configured with appropriate access credentials
 - Git
 
 ## Project Structure
 ```
+├── deploy_website.yaml
 ├── group_vars
-│ └── docker.yaml
-├── hosts
-├── playbooks
-│ ├── deploy_website.yaml
-│ ├── docker
-│ │ └── dockerfile
-│ └── roles
-│ ├── build_docker_image
-│ │ └── tasks
-│ │ └── main.yaml
-│ ├── copy_dockerfile
-│ │ └── tasks
-│ │ └── main.yaml
-│ ├── install_docker
-│ │ └── tasks
-│ │ └── main.yaml
-│ ├── run_docker_container
-│ │ └── tasks
-│ │ └── main.yaml
-│ └── update_repos
-│ └── tasks
-│ └── main.yaml
-└── readme.md
+│   ├── docker
+│   │   └── vars.yaml
+│   └── dynamic_vm
+│       ├── vars.yaml
+│       └── vault.yaml
+├── hosts.ini
+├── readme.md
+└── roles
+    ├── deploy_vm
+    │   └── tasks
+    │       ├── create_sg.yaml
+    │       ├── deploy_vm.yaml
+    │       └── main.yaml
+    └── deploy_website
+        ├── tasks
+        │   ├── build_image.yaml
+        │   ├── install_docker.yaml
+        │   ├── main.yaml
+        │   ├── run_container.yaml
+        │   └── update_repos.yaml
+        └── templates
+            └── Dockerfile.j2
 ```
 
 ## Running the Project
@@ -50,7 +49,7 @@ This project sets up a Docker container running an NGINX web server that serves 
 
 2. **Fill in the Dockerfile environment variables**:
 
-    Replace the placeholders in your Dockerfile with the AWS credentials you copied:
+    Replace the placeholders in your Dockerfile with the AWS credentials you copied (in vault):
 
     ```Dockerfile
     ENV AWS_ACCESS_KEY_ID=your_access_key_id
@@ -61,8 +60,10 @@ This project sets up a Docker container running an NGINX web server that serves 
 
     Assuimg you have your hosts file set up along with the account you will be running the plays with on the remote host:
 
-    ansible-playbook -i hosts -k -u ansible playbooks/deploy_website.yaml -vvv
+    ```bash
+    $ ansible-playbook -i hosts.ini deploy_website.yaml -vv --vault-password-file ~/.vault_ansible
+    ```
 
-6. **Access the website**:
+4. **Access the website**:
 
    Open a web browser and navigate to `http://<your-ec2-instance-ip>`

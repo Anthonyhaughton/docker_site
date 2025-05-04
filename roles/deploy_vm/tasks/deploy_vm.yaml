@@ -14,7 +14,7 @@
     vpc_subnet_id: "{{ vpc_subnet_id }}"
     filters:
       instance-state-name: running
-      "tag:Name": "My EC2 Instance"
+      "tag:Name": "docker_site"
   register: ec2_result
 
 - name: Add new instance to inventory
