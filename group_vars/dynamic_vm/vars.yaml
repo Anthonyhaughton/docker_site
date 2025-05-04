@@ -1,0 +1,13 @@
+docker_image_name: my-website
+docker_container_name: website-container
+tag: 'latest'
+
+dockerfile_src_path: /Users/ahaughton/Documents/Projects/ansible/docker_website/roles/deploy_website/templates/Dockerfile.j2
+dockerfile_dest_path: /home/ec2-user/Dockerfile
+dockerfile_build_path: /home/ec2-user/
+
+file_owner: ec2-user
+file_mode: 0644
+
+container_port_mapping: "80:80"
+package_name: docker

@@ -15,7 +15,7 @@
     filters:
       instance-state-name: running
       "tag:Name": "My EC2 Instance"
-  register: running_instances
+  register: ec2_result
 
 - name: Add new instance to inventory
   ansible.builtin.add_host:
@@ -24,3 +24,13 @@
     ansible_user: ec2-user
     ansible_ssh_private_key_file: "{{ private_key_path }}"
     groups: dynamic_vm
+  
+- name: Set Fact for VM IP
+  ansible.builtin.set_fact:
+    docker_target_ip: "{{ ec2_result.instances[0].public_ip_address }}"
+
+- name: Copy SSH key to Node
+  ansible.builtin.copy:
+    src: /Users/ahaughton/Downloads/docker_key.pem
+    dest: /home/ec2-user/
+    mode: 400

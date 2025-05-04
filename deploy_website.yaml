@@ -8,12 +8,14 @@
       role: deploy_vm
 
 - name: Wait for VM to Provison
-  hosts: dynamic_vm
+  hosts: docker
+  gather_facts: false
   tasks:
   
   - name: Wait for VM to Start
     ansible.builtin.wait_for:
       port: 22
+      host: "{{ docker_target_ip }}"
       delay: 10
       timeout: 300
       state: started

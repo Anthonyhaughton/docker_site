@@ -12,7 +12,7 @@
     enabled: true
 
 - name: Copy Dockerfile to EC2 instance
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: "{{ dockerfile_src_path }}"
     dest: "{{ dockerfile_dest_path }}"
     owner: "{{ file_owner }}"
